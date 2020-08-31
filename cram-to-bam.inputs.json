@@ -1,8 +1,8 @@
 {
   "CramToBamFlow.sample_name": "NA12878",
-  "CramToBamFlow.input_cram": "gs://gatk-test-data/wgs_cram/NA12878_20k_hg38/NA12878.cram",
+  "CramToBamFlow.input_cram": "/datasettestinputs/dataset/seq-format-conversion/NA12878_20k/NA12878.cram",
   
-  "CramToBamFlow.ref_dict": "gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dict",
-  "CramToBamFlow.ref_fasta": "gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta",
-  "CramToBamFlow.ref_fasta_index": "gs://genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta.fai"
+  "CramToBamFlow.ref_dict": "/datasettestinputs/dataset/references/hg38/v0/Homo_sapiens_assembly38.dict",
+  "CramToBamFlow.ref_fasta": "/datasettestinputs/dataset/references/hg38/v0/Homo_sapiens_assembly38.fasta",
+  "CramToBamFlow.ref_fasta_index": "/datasettestinputs/dataset/references/hg38/v0/Homo_sapiens_assembly38.fasta.fai"
 }

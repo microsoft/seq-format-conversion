@@ -22,7 +22,6 @@ version 1.0
 ## - Successfully tested on v47
 ## - Does not work on versions < v23 due to output syntax
 ##
-## Runtime parameters are optimized for Broad's Google Cloud Platform implementation. 
 ## For program versions, see docker containers. 
 ##
 ## LICENSING : 
@@ -128,8 +127,9 @@ task PairedFastQsToUnmappedBAM {
   runtime {
     docker: docker
     memory: machine_mem_gb + " GB"
-    disks: "local-disk " + disk_space_gb + " HDD"
-    preemptible: preemptible_attempts
+    disk: disk_space_gb + " GB"
+    preemptible: true
+    maxRetries: preemptible_attempts
   }
   output {
     File output_unmapped_bam = "~{readgroup_name}.unmapped.bam"
@@ -153,7 +153,8 @@ task CreateFoFN {
   }
   runtime {
     docker: "ubuntu:latest"
-    preemptible: 3
+    preemptible: true
+    maxRetries: 3
   }
 }
 
