@@ -13,7 +13,6 @@ version 1.0
 ## - Successfully tested on v47
 ## - Does not work on versions < v23 due to output syntax
 ##
-## Runtime parameters are optimized for Broad's Google Cloud Platform implementation. 
 ## For program versions, see docker containers. 
 ##
 ## LICENSING : 
@@ -90,9 +89,10 @@ task RevertSam {
   }
   runtime {
     docker: docker
-    disks: "local-disk " + disk_size + " HDD"
+    disk: disk_size + " GB"
     memory: machine_mem_gb + " GB"
-    preemptible: preemptible_attempts
+    preemptible: true
+    maxRetries: preemptible_attempts
   }
   output {
     Array[File] unmapped_bams = glob("*.bam")
@@ -123,12 +123,12 @@ task SortSam {
   }
   runtime {
     docker: docker
-    disks: "local-disk " + disk_size + " HDD"
+    disk: disk_size + " GB"
     memory: machine_mem_gb + " GB"
-    preemptible: preemptible_attempts
+    preemptible: true
+    maxRetries: preemptible_attempts
   }
   output {
     File sorted_bam = "~{sorted_bam_name}"
   }
 }
-

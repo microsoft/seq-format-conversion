@@ -44,7 +44,7 @@ task uninterleave_fqs {
   runtime {
     docker: "ubuntu:latest"
     memory: machine_mem_gb + " GB"
-    disks: "local-disk " + disk_size + " HDD"
+    disk: disk_size + " GB"
   }
 
   output {

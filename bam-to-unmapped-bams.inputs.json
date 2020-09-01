@@ -1,5 +1,5 @@
 
 {
-  "BamToUnmappedBams.input_bam": "gs://gatk-test-data/wgs_bam/NA12878_20k_hg38/NA12878.bam"
+  "BamToUnmappedBams.input_bam": "/datasettestinputs/dataset/seq-format-conversion/NA12878_20k/NA12878.bam"
 }
 

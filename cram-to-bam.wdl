@@ -1,8 +1,9 @@
 version 1.0
 ## Copyright Broad Institute, 2017
-## This script should convert a CRAM to SAM to BAM and output a BAM, BAM Index, and validation report to a Google bucket. If you'd like to do ## this on multiple CRAMS, create a sample set in the Data tab.  
+## This script should convert a CRAM to SAM to BAM and output a BAM, BAM Index, and validation report to a Azure Blob storage. 
 ## The reason this approach was chosen instead of converting CRAM to BAM directly using Samtools is because Samtools 1.3 produces incorrect 
-## bins due to an old version of htslib included in the package. Samtools versions 1.4 & 1.5 have an NM issue that causes them to not validate ## with Picard. 
+## bins due to an old version of htslib included in the package. Samtools versions 1.4 & 1.5 have an NM issue that causes them to not validate 
+## with Picard. 
 ## 
 ## TESTED: It was tested using the Genomes in the Cloud Docker image version 2.3.1-1500064817. 
 ## Versions of other tools on this image at the time of testing:
@@ -18,7 +19,6 @@ version 1.0
 ## SVTOOLKIT_VER=2.00-1650
 ## It was tested pulling the HG38 reference Fasta and Fai.
 ## Successfully tested on Cromwell version 47. Does not work on versions < v23 due to output syntax 
-## Runtime parameters are optimized for Broad's Google Cloud Platform implementation. 
 ##
 ## LICENSING : This script is released under the WDL source code license (BSD-3) (see LICENSE in https://github.com/broadinstitute/wdl). 
 ## Note however that the programs it calls may be subject to different licenses. Users are responsible for checking that they are authorized to run all programs before running this script. 
@@ -103,8 +103,9 @@ task CramToBamTask {
   runtime {
     docker: docker_image
     memory: machine_mem_size + " GB"
-    disks: "local-disk " + disk_size + " HDD"
-    preemptible: preemptible_tries
+    disk: disk_size + " GB"
+    preemptible: true
+    maxRetries: preemptible_tries
   }
     
   #Outputs a BAM and BAI with the same sample name
@@ -140,8 +141,9 @@ task ValidateSamFile {
 		runtime {
     docker: docker_image
     memory: machine_mem_size + " GB"
-    disks: "local-disk " + disk_size + " HDD"
-    preemptible: preemptible_tries
+    disk: disk_size + " GB"
+    preemptible: true
+    maxRetries: preemptible_tries
     continueOnReturnCode: [0,1]
   }
   #A text file is generated that will list errors or warnings that apply. 
@@ -149,4 +151,3 @@ task ValidateSamFile {
     File report = "~{output_name}"
   }
 }
-
