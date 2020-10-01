@@ -109,7 +109,7 @@ task PairedFastQsToUnmappedBAM {
     String docker
   }
     Int command_mem_gb = machine_mem_gb - 1
-    Int disk_space_gb = ceil((size(fastq_1, "GB") + size(fastq_2, "GB")) * 2 ) + addtional_disk_space_gb
+    Int disk_space_gb = ceil((size(fastq_1, "GB") + size(fastq_2, "GB")) * 3 ) + addtional_disk_space_gb
   command {
     ~{gatk_path} --java-options "-Xmx~{command_mem_gb}g" \
     FastqToSam \
