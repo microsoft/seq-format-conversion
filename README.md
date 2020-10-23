@@ -6,7 +6,7 @@ Learn more about using Azure for your Cromwell WDL workflows on our GitHub repo!
 
 This repository is a fork from [the original](https://github.com/gatk-workflows/seq-format-conversion) and has all the required changes to run the WDL workflow on Cromwell on Azure.<br/>
 
-Here, you can find the WDL files and an example inputs JSON files with links to data hosted on a public Azure Storage account. You can use the "msgenpublicdata" storage account directly as a relative path, like in the inputs JSON file. 
+Here, you can find the WDL files and an example inputs JSON files with links to data hosted on a public Azure Storage account. You can use the "datasettestinputs" storage account directly as a relative path, like in the inputs JSON file. 
 
 The `bam-to-unmapped-bams.trigger.json`, `cram-to-bam.trigger.json`, `interleaved-fastq-to-paired-fastq.trigger.json` and `paired-fastq-to-unmapped-bam.trigger.json` trigger files are ready to use.
 
