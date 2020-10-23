@@ -8,7 +8,7 @@ This repository is a fork from [the original](https://github.com/gatk-workflows/
 
 Here, you can find the WDL files and an example inputs JSON files with links to data hosted on a public Azure Storage account. You can use the "datasettestinputs" storage account directly as a relative path, like in the inputs JSON file. 
 
-The `bam-to-unmapped-bams.trigger.json`, `cram-to-bam.trigger.json`, `interleaved-fastq-to-paired-fastq.trigger.json` and `paired-fastq-to-unmapped-bam.trigger.json` trigger files are ready to use.
+The `bam-to-unmapped-bams.trigger.json`, `cram-to-bam.trigger.json`, `interleaved-fastq-to-paired-fastq.trigger.json` and `paired-fastq-to-unmapped-bam.trigger.json` trigger files are ready to use. You can start the workflow on your instance of Cromwell on Azure, using [these instructions](https://github.com/microsoft/CromwellOnAzure/blob/master/docs/managing-your-workflow.md/#Start-your-workflow).
 
 ## seq-format-conversion
 Workflows for converting between sequence data formats
